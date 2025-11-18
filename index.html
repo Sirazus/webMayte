@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <!-- SEO dinámico -->
+    <title id="page-title">Dra. María Teresa Jiménez | Odontología Estética Avanzada Barcelona</title>
+    <meta name="description" content="Especialista en Estética Digital y Rehabilitación Funcional en Barcelona. DSD, DTM, Implantes. Tratamientos basados en evidencia científica.">
+    <meta property="og:title" content="Dra. María Teresa Jiménez - Odontología de Excelencia">
+    <meta property="og:description" content="Transformación de sonrisas con tecnología digital y enfoque funcional">
+    <meta property="og:image" content="https://cdn.pixabay.com/photo/2017/03/13/17/54/dentist-2140439_1280.jpg">
+   
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+   
+    <style>
+        :root {
+            --color-primary: #047878;
+            --color-accent: #dc2626; /* red-600 */
+        }
+       
+        html { scroll-behavior: smooth; }
+       
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937;
+            background-color: #f9fafb;
+        }
+       
+        .font-serif-display { font-family: 'Playfair Display', serif; }
+       
+        /* Botones */
+        .cta-primary {
+            background-color: var(--color-primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .cta-primary:hover {
+            background-color: #069494;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(4, 120, 120, 0.3);
+        }
+       
+        .cta-secondary {
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+        .cta-secondary:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+       
+        /* Video Hero */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+       
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(4,120,120,0.3));
+        }
+       
+        /* Lightbox */
+        #videoLightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+       
+        #videoLightbox video {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+       
+        /* Accesibilidad */
+        a:focus, button:focus {
+            outline: 3px solid #069494;
+            outline-offset: 2px;
+        }
+       
+        /* Animaciones */
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+       
+        /* Menú móvil */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+       
+        .mobile-menu.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="min-h-screen flex flex-col">
+        <!-- NAV -->
+        <header class="sticky top-0 bg-white shadow-lg z-50" role="banner">
+            <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center relative">
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl font-serif-display font-bold text-gray-800">Dra. M.T. Jiménez</span>
+                    <span class="text-sm text-gray-500 hidden md:inline">| Estética y Función</span>
+                </div>
+               
+                <!-- Menú desktop -->
+                <div class="hidden md:flex space-x-6 text-lg font-medium">
+                    <a href="#home" data-nav="home" class="nav-link hover:text-teal-600 transition duration-150 text-gray-600">Inicio</a>
+                    <a href="#trayectoria" data-nav="trayectoria" class="nav-link hover:text-teal-600 transition duration-150 text-gray-600">Trayectoria</a>
+                    <a href="#blog" data-nav="blog" class="nav-link hover:text-teal-600 transition duration-150 text-gray-600">Blog</a>
+                    <a href="#sobremi" data-nav="sobremi" class="nav-link hover:text-teal-600 transition duration-150 text-gray-600">Sobre mí</a>
+                    <a href="#cita" class="text-white bg-red-600 px-4 py-2 rounded-full text-base hover:bg-red-700 transition duration-150 shadow-md">
+                        📅 Cita
+                    </a>
+                </div>
+               
+                <!-- Botón menú móvil -->
+                <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="Abrir menú">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+               
+                <!-- Menú móvil -->
+                <div id="mobile-menu" class="mobile-menu md:hidden">
+                    <div class="flex flex-col p-4 space-y-4">
+                        <a href="#home" data-nav="home" class="nav-link py-2 hover:text-teal-600">Inicio</a>
+                        <a href="#trayectoria" data-nav="trayectoria" class="nav-link py-2 hover:text-teal-600">Trayectoria</a>
+                        <a href="#blog" data-nav="blog" class="nav-link py-2 hover:text-teal-600">Blog</a>
+                        <a href="#sobremi" data-nav="sobremi" class="nav-link py-2 hover:text-teal-600">Sobre mí</a>
+                        <a href="#cita" class="cta-primary py-2 px-4 rounded-full text-center">📅 Cita</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main id="content" class="flex-grow"></main>
+
+        <!-- FOOTER -->
+        <footer class="bg-gray-800 text-gray-400 mt-16 py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-white font-semibold mb-3 font-serif-display">Contacto Profesional</h4>
+                    <p class="text-sm mb-1">📞 <a href="tel:+34931234567" class="hover:text-white transition">+34 93 123 45 67</a> (Cita Previa)</p>
+                    <p class="text-sm mb-1">📧 <a href="mailto:contacto@dra-jimenez.com" class="hover:text-white transition">contacto@dra-jimenez.com</a></p>
+                    <p class="text-sm mt-2">📍 Sarrià-Sant Gervasi, Barcelona</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-3 font-serif-display">Horario de Consulta</h4>
+                    <p class="text-sm">Lunes a Jueves: 9:00 - 18:00</p>
+                    <p class="text-sm">Viernes: 9:00 - 14:00</p>
+                    <p class="text-sm">Fines de Semana: Cerrado</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-3 font-serif-display">Especialidades</h4>
+                    <ul class="space-y-1 text-sm">
+                        <li><a href="#servicio-estetica" class="hover:text-white transition">Estética Digital (DSD)</a></li>
+                        <li><a href="#servicio-funcional" class="hover:text-white transition">Rehabilitación Funcional (DTM)</a></li>
+                        <li><a href="#blog" data-nav="blog" class="hover:text-white transition">Evidencia Científica</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-3 font-serif-display">Información Legal</h4>
+                    <p class="text-sm">Miembro del equipo <a href="https://cambraclinic.com" class="underline hover:text-white" target="_blank">CambraClinic</a></p>
+                    <p class="text-sm mt-2">Colegiada Nº 12345</p>
+                    <p class="text-sm mt-4">© 2024 Dra. M. T. Jiménez. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Lightbox para video -->
+    <div id="videoLightbox" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-label="Reproductor de video">
+        <span class="close-lightbox" aria-label="Cerrar vídeo">&times;</span>
+        <video id="lightboxVideo" controls preload="none"
+               poster="https://cdn.pixabay.com/photo/2017/03/13/17/54/dentist-2140439_1280.jpg">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            <source src="https://www.w3schools.com/html/mov_bbb.webm" type="video/webm">
+            <p class="text-white text-center p-4">Tu navegador no soporta vídeo HTML5.</p>
+        </video>
+    </div>
+
+    <script>
+        /* ==========  ARTÍCULOS COMPLETOS  ========== */
+        const articles = [
+            {
+                id: 1,
+                title: "Cómo la Odontología Digital está transformando tu sonrisa: del diseño al resultado",
+                summary: "Descubre cómo herramientas como el escáner intraoral y el Diseño de Sonrisa Digital (DSD) mejoran la previsibilidad, la satisfacción y la eficiencia de tus tratamientos estéticos.",
+                category: "Estética Avanzada",
+                slug: "odontologia-digital-dsd",
+                image: "https://images.unsplash.com/photo-1579684453423-f84321ef6b7d?w=800",
+                content: `
+                    <p class="resumen text-xl font-light mb-6 text-teal-700">La odontología digital ha abierto una nueva era en los tratamientos estéticos de la sonrisa. Herramientas como el escáner intraoral, el diseño de sonrisa digital (DSD) y la planificación 3D permiten al odontólogo visualizar y comunicar el resultado antes de empezar, involucrando al paciente en el proceso.</p>
+                   
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">El proceso paso a paso</h2>
+                    <ol class="list-decimal ml-6 space-y-2 mb-6">
+                        <li><strong>Evaluación inicial:</strong> se registran fotografías faciales, intraorales e incluso video del paciente al hablar y sonreír.</li>
+                        <li><strong>Escaneo intraoral:</strong> toma de impresiones digitalizadas para obtener un modelo 3D de los dientes y encías.</li>
+                        <li><strong>Diseño con software DSD:</strong> se definen líneas de sonrisa, ejes de los incisivos, proporción dentaria, simetría facial, forma de los dientes, contorno de encías, etc.</li>
+                        <li><strong>Simulación visual:</strong> se genera una imagen o animación del "antes" y "después" esperados.</li>
+                        <li><strong>Prototipado 3D:</strong> impresión de modelos o guías de provisionales para ensayar el diseño en boca.</li>
+                        <li><strong>Tratamiento definitivo:</strong> puede implicar ortodoncia, carillas, coronas, contorno gingival u otros, con mayor previsión.</li>
+                        <li><strong>Evaluación post-tratamiento</strong> y ajustes finales.</li>
+                    </ol>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Ventajas para el paciente</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li><strong>Visualización anticipada:</strong> saber cómo quedará tu sonrisa antes de empezar.</li>
+                        <li><strong>Mayor participación:</strong> diseñamos tu sonrisa juntos, no es algo que "te hacen".</li>
+                        <li><strong>Mejor comunicación:</strong> usamos las mismas imágenes para aclarar expectativas.</li>
+                        <li><strong>Reducción de sorpresas:</strong> se minimizan errores o adaptaciones indeseadas.</li>
+                        <li><strong>Menor tiempo:</strong> el flujo digital optimiza el número de visitas.</li>
+                        <li><strong>Evidencia de satisfacción:</strong> estudios muestran puntuaciones de satisfacción del 85% vs 79% en grupo convencional.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Limitaciones importantes</h2>
+                    <p class="mb-4">Aunque los resultados son prometedores, la calidad de algunos estudios es moderada y se requiere más evidencia a largo plazo. El coste puede ser mayor, y la simulación es una previsión, no una garantía. Factores como salud periodontal, hueso, condición dental inicial y hábitos influyen en el resultado final.</p>
+
+                    <div class="mt-12 p-8 bg-teal-50 rounded-xl border-l-4 border-teal-600">
+                        <h3 class="text-2xl font-serif-display font-bold mb-3 text-teal-800">Consejo profesional</h3>
+                        <p class="text-gray-700 mb-4">La tecnología es una herramienta, pero el criterio clínico y la experiencia del profesional son clave. La estética es importante, pero la salud bucal, la función y el mantenimiento a largo plazo son igualmente fundamentales.</p>
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                title: "Sin miedo al dentista: sedación consciente y nuevas estrategias para pacientes ansiosos",
+                summary: "El miedo al dentista afecta a millones de personas y es una de las principales causas de abandono del tratamiento. Exploramos técnicas seguras para controlar la ansiedad.",
+                category: "Salud Preventiva",
+                slug: "sedacion-consciente-pacientes-ansiosos",
+                image: "https://images.unsplash.com/photo-1598256989800-b308130ec089?w=800",
+                content: `
+                    <p class="resumen text-xl font-light mb-6 text-teal-700">El miedo al dentista afecta a millones de personas y es una de las principales causas de abandono del tratamiento dental. Hoy existen técnicas seguras para controlar la ansiedad, desde la sedación consciente hasta terapias psicológicas.</p>
+                   
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Estrategias disponibles</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li><strong>Técnicas psicológicas:</strong> terapia cognitivo-conductual, exposición gradual, hipnosis.</li>
+                        <li><strong>Sedación consciente inhalatoria:</strong> mezcla de óxido nitroso y oxígeno, segura y reversible.</li>
+                        <li><strong>Sedación oral o intravenosa:</strong> indicada en casos moderados a graves, con monitoreo médico.</li>
+                        <li><strong>Realidad virtual y música terapéutica:</strong> ayudan a distraer la atención del paciente.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Evidencia científica reciente</h2>
+                    <p class="mb-4">Una revisión sistemática (2024) halló que la terapia conductual es tan efectiva como la sedación inhalatoria en la reducción de ansiedad. Un metaanálisis en niños mostró que la dexmedetomidina ofrece mayor estabilidad cardiovascular que el midazolam durante procedimientos.</p>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Ventajas de la sedación consciente</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li>El paciente está despierto y puede comunicarse.</li>
+                        <li>No requiere anestesia general.</li>
+                        <li>Recuperación rápida y segura.</li>
+                        <li>Permite realizar tratamientos largos sin estrés.</li>
+                    </ul>
+
+                    <div class="mt-12 p-8 bg-teal-50 rounded-xl border-l-4 border-teal-600">
+                        <h3 class="text-2xl font-serif-display font-bold mb-3 text-teal-800">Consideraciones importantes</h3>
+                        <ul class="list-disc ml-6 space-y-1 text-gray-700">
+                            <li>No ingerir comidas copiosas antes del procedimiento.</li>
+                            <li>Informar al odontólogo de enfermedades crónicas o medicación.</li>
+                            <li>Acudir acompañado si se aplica sedación oral o intravenosa.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                title: "Primeros dientes, grandes cuidados: salud bucal infantil desde la primera infancia",
+                summary: "La salud bucal infantil es clave para el desarrollo físico y emocional. Las enfermedades bucales son prevenibles mediante hábitos adecuados y visitas odontológicas tempranas.",
+                category: "Salud Preventiva",
+                slug: "salud-bucal-infantil",
+                image: "https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?w=800",
+                content: `
+                    <p class="resumen text-xl font-light mb-6 text-teal-700">La salud bucal infantil es clave para el desarrollo físico y emocional del niño. Las enfermedades bucales, especialmente la caries temprana, son prevenibles mediante hábitos adecuados y visitas odontológicas tempranas.</p>
+                   
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Prevención desde el primer diente</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li>Limpieza con gasas o cepillos infantiles desde la erupción del primer diente.</li>
+                        <li>Uso de pasta fluorada (1000-1450 ppm) en cantidad de "grano de arroz".</li>
+                        <li>Evitar consumo frecuente de azúcares y biberones nocturnos.</li>
+                        <li>Revisiones cada 6 meses.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Avances recientes</h2>
+                    <p class="mb-4">El uso de barnices fluorados de alta concentración ha mostrado eficacia en reducción de caries en dentición temporal. Técnicas minimamente invasivas, como selladores infiltrantes y microabrasión, conservan el tejido sano. Se investigan biomateriales remineralizantes que liberan calcio y fosfato en lesiones incipientes.</p>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Salud bucal y desarrollo infantil</h2>
+                    <p class="mb-4">La pérdida prematura de dientes temporales puede alterar la masticación, fonación y autoestima del niño. Además, la inflamación crónica por caries activa respuestas inmunes que pueden influir en su salud general.</p>
+
+                    <div class="mt-12 p-8 bg-teal-50 rounded-xl border-l-4 border-teal-600">
+                        <h3 class="text-2xl font-serif-display font-bold mb-3 text-teal-800">Consejos prácticos para padres</h3>
+                        <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                            <li>Primera visita odontológica: antes del primer cumpleaños.</li>
+                            <li>Supervisar el cepillado hasta los 8 años.</li>
+                            <li>Fomentar la alimentación sana y limitar bebidas azucaradas.</li>
+                            <li>Buscar clínicas con enfoque preventivo, no solo reparador.</li>
+                        </ol>
+                    </div>
+                `
+            },
+            {
+                id: 4,
+                title: "Blanqueamiento dental seguro: mitos, realidades y cómo elegir el tratamiento adecuado",
+                summary: "El blanqueamiento dental es uno de los tratamientos estéticos más solicitados. Abordamos las claves para realizarlo de forma segura, los tipos existentes y la evidencia científica reciente.",
+                category: "Estética Avanzada",
+                slug: "blanqueamiento-dental-seguro",
+                image: "https://images.unsplash.com/photo-1601581874834-3b6065645e45?w=800",
+                content: `
+                    <p class="resumen text-xl font-light mb-6 text-teal-700">El blanqueamiento dental es uno de los tratamientos estéticos más solicitados, pero también uno de los más malinterpretados. La popularidad de productos caseros y 'blanqueamientos exprés' ha aumentado el riesgo de sensibilidad y daño al esmalte cuando se aplican sin supervisión.</p>
+                   
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Tipos de blanqueamiento</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li><strong>En clínica:</strong> uso de concentraciones altas (25-40% H₂O₂), con aislamiento de tejidos blandos y control profesional.</li>
+                        <li><strong>Ambulatorio:</strong> férulas personalizadas y concentraciones más bajas (10-16%), aplicadas en casa bajo indicaciones específicas.</li>
+                        <li><strong>Productos de venta libre:</strong> tiras, lápices o pastas 'blanqueadoras'. Su efectividad es limitada y pueden aumentar la sensibilidad si se abusan.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Evidencia científica reciente</h2>
+                    <p class="mb-4">Una revisión sistemática (2024) demostró que los blanqueamientos profesionales producen un aclaramiento dental significativo y sostenido, sin cambios estructurales en el esmalte cuando se controlan los parámetros clínicos. Un ensayo clínico (2023) comparó blanqueamiento en consulta y domiciliario, mostrando eficacia similar, pero con menor sensibilidad en el domiciliario.</p>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Mitos comunes y realidades</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li><strong>"El blanqueamiento daña los dientes":</strong> Falso, si se realiza bajo supervisión profesional.</li>
+                        <li><strong>"Los productos naturales como el carbón activado son seguros":</strong> Falso; existe evidencia de abrasión del esmalte.</li>
+                        <li><strong>"El blanqueamiento dura para siempre":</strong> No; el resultado depende de los hábitos del paciente.</li>
+                    </ul>
+
+                    <div class="mt-12 p-8 bg-teal-50 rounded-xl border-l-4 border-teal-600">
+                        <h3 class="text-2xl font-serif-display font-bold mb-3 text-teal-800">Recomendaciones prácticas</h3>
+                        <ul class="list-disc ml-6 space-y-1 text-gray-700">
+                            <li>Consulta siempre antes con tu odontólogo; se deben descartar caries, sensibilidad o restauraciones antiguas.</li>
+                            <li>Evita productos no regulados o 'clínicas exprés' sin control odontológico.</li>
+                            <li>Mantén hábitos saludables: cepillado correcto, evitar tabaco y bebidas pigmentadas.</li>
+                            <li>Realiza mantenimientos anuales si el profesional lo indica.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 5,
+                title: "Menos, es más: la odontología mínimamente invasiva y cómo preserva tu sonrisa",
+                summary: "La odontología mínimamente invasiva representa un cambio profundo: tratar lo necesario, conservar lo sano. Gracias a nuevos materiales y técnicas digitales, hoy es posible restaurar con menor pérdida de estructura.",
+                category: "Rehabilitación Funcional",
+                slug: "odontologia-minimamente-invasiva",
+                image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800",
+                content: `
+                    <p class="resumen text-xl font-light mb-6 text-teal-700">La odontología mínimamente invasiva (OMI) representa un cambio profundo en la filosofía clínica: tratar lo necesario, conservar lo sano. Gracias a los nuevos materiales adhesivos, biomarcadores diagnósticos y técnicas digitales, hoy es posible restaurar dientes con menor pérdida de estructura, menos dolor y mayor durabilidad.</p>
+                   
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Principios de la OMI</h2>
+                    <ol class="list-decimal ml-6 space-y-2 mb-6">
+                        <li><strong>Prevención y control del biofilm:</strong> higiene, flúor, dieta equilibrada.</li>
+                        <li><strong>Diagnóstico temprano con herramientas digitales</strong> (transiluminación, caries-detector óptico, IA).</li>
+                        <li><strong>Eliminación selectiva del tejido infectado,</strong> preservando la dentina afectada que puede remineralizarse.</li>
+                        <li><strong>Restauraciones adhesivas</strong> que refuerzan la estructura dentaria en lugar de reemplazarla.</li>
+                    </ol>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Técnicas actuales</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li><strong>Infiltración de resinas</strong> para detener caries incipientes sin fresado.</li>
+                        <li><strong>Abrasión por aire y láser Er:YAG,</strong> que eliminan el tejido afectado con mínima pérdida adicional.</li>
+                        <li><strong>Materiales bioactivos</strong> (vidrios ionoméricos, resinas con liberación de calcio/fósforo).</li>
+                        <li><strong>Selladores de fisuras</strong> en molares jóvenes como prevención primaria.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Evidencia científica reciente</h2>
+                    <p class="mb-4">Un metaanálisis de 2024 concluyó que las técnicas mínimamente invasivas ofrecen igual o mejor tasa de supervivencia que los métodos convencionales en dientes permanentes. González-Gil et al. (2024) reportaron que los tratamientos mínimamente invasivos reducen la sensibilidad postoperatoria y conservan hasta un 30% más de estructura.</p>
+
+                    <div class="mt-12 p-8 bg-teal-50 rounded-xl border-l-4 border-teal-600">
+                        <h3 class="text-2xl font-serif-display font-bold mb-3 text-teal-800">Ventajas para el paciente</h3>
+                        <ul class="list-disc ml-6 space-y-1 text-gray-700">
+                            <li>Procedimientos más cómodos y rápidos.</li>
+                            <li>Menor necesidad de anestesia.</li>
+                            <li>Conservación del tejido natural.</li>
+                            <li>Menor costo futuro por reparaciones o fracturas.</li>
+                            <li>Mejor estética y sensación de "diente natural".</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                id: 6,
+                title: "Más que dientes bonitos: armonización orofacial y estética dental integral",
+                summary: "La armonización orofacial integra procedimientos dentales y estéticos faciales para lograr equilibrio entre dientes, encías y rasgos. Desde carillas hasta toxina botulínica y ácido hialurónico.",
+                category: "Estética Avanzada",
+                slug: "armonizacion-orofacial",
+                image: "https://images.unsplash.com/photo-1522336572468-97a06e8ef876?w=800",
+                content: `
+                    <p class="resumen text-xl font-light mb-6 text-teal-700">La armonización orofacial integra procedimientos dentales y estéticos faciales para lograr equilibrio entre dientes, encías y rasgos. Desde carillas y blanqueamientos hasta toxina botulínica y ácido hialurónico, su objetivo es mejorar la estética sin perder naturalidad ni función.</p>
+                   
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Procedimientos más comunes</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li><strong>Carillas cerámicas o de resina</strong> para modificar forma y color.</li>
+                        <li><strong>Contorneado gingival</strong> para equilibrar la línea de sonrisa.</li>
+                        <li><strong>Toxina botulínica</strong> en casos de sonrisa gingival o bruxismo.</li>
+                        <li><strong>Ácido hialurónico</strong> para volumen labial y surcos.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Evidencia científica reciente</h2>
+                    <p class="mb-4">Una revisión (2024) mostró altos niveles de satisfacción en pacientes sometidos a armonización orofacial multidisciplinaria. El uso de DSD combinado con procedimientos faciales mejora la percepción estética global. La aplicación odontológica de toxina botulínica demostró eficacia en bruxismo y cefaleas tensionales.</p>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Riesgos y consideraciones</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li>Es esencial realizar los procedimientos en clínicas odontológicas acreditadas.</li>
+                        <li>La anatomía facial debe estudiarse exhaustivamente para evitar complicaciones vasculares.</li>
+                        <li>Los resultados son temporales (6-12 meses) y requieren mantenimiento.</li>
+                    </ul>
+
+                    <div class="mt-12 p-8 bg-teal-50 rounded-xl border-l-4 border-teal-600">
+                        <h3 class="text-2xl font-serif-display font-bold mb-3 text-teal-800">Filosofía del tratamiento</h3>
+                        <p class="text-gray-700">La armonización orofacial busca realzar la belleza natural, no transformarla. El éxito radica en la planificación integral y la comunicación entre paciente y profesional.</p>
+                    </div>
+                `
+            },
+            {
+                id: 7,
+                title: "Implantes dentales: mitos, realidades y avances digitales",
+                summary: "Los implantes dentales son hoy el tratamiento de elección para reemplazar dientes perdidos. Desmentimos los mitos más comunes y presentamos las innovaciones digitales que han revolucionado la implantología.",
+                category: "Rehabilitación Funcional",
+                slug: "implantes-digitales-mitos-realidades",
+                image: "https://images.unsplash.com/photo-1594997285973-630e117e8c9c?w=800",
+                content: `
+                    <p class="resumen text-xl font-light mb-6 text-teal-700">Los implantes dentales son hoy el tratamiento de elección para reemplazar dientes perdidos. Sin embargo, aún existen dudas sobre su duración, seguridad y coste. Este artículo analiza las verdades detrás de los mitos y presenta las innovaciones digitales que han revolucionado la implantología.</p>
+                   
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Mitos frecuentes</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li><strong>"Los implantes duelen mucho":</strong> Falso. La cirugía se realiza con anestesia local y las molestias suelen ser menores que una extracción.</li>
+                        <li><strong>"Se caen con el tiempo":</strong> La pérdida ocurre solo si hay mala higiene o tabaquismo intenso.</li>
+                        <li><strong>"Son muy caros":</strong> Aunque la inversión inicial es mayor, su duración los hace costo-efectivos a largo plazo.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Proceso actual de colocación</h2>
+                    <ol class="list-decimal ml-6 space-y-2 mb-6">
+                        <li>Escaneo digital e imágenes CBCT para planificar posición exacta.</li>
+                        <li>Diseño asistido por software con guías quirúrgicas impresas 3D.</li>
+                        <li>Colocación con mínima incisión y control de torque.</li>
+                        <li>Carga inmediata o diferida según calidad ósea.</li>
+                        <li>Revisión periódica con seguimiento digital.</li>
+                    </ol>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Evidencia reciente</h2>
+                    <p class="mb-4">Revisión sistemática (2024) demostró menor pérdida ósea marginal con cirugía guiada digitalmente. Estudio clínico (2023) confirmó que los implantes con superficie nanotexturizada presentan mejor osteointegración. Investigaciones de IA en implantología permiten predecir la estabilidad primaria.</p>
+
+                    <div class="mt-12 p-8 bg-teal-50 rounded-xl border-l-4 border-teal-600">
+                        <h3 class="text-2xl font-serif-display font-bold mb-3 text-teal-800">Cuidados y mantenimiento</h3>
+                        <ul class="list-disc ml-6 space-y-1 text-gray-700">
+                            <li>Higiene diaria con cepillos interdentales.</li>
+                            <li>Revisiones cada 6 meses.</li>
+                            <li>Evitar tabaco y controlar diabetes.</li>
+                        </ul>
+                        <p class="text-gray-700 mt-4"><strong>Conclusión:</strong> Los implantes dentales son seguros, duraderos y funcionales. Con planificación digital y un buen mantenimiento, pueden durar toda la vida.</p>
+                    </div>
+                `
+            },
+            {
+                id: 8,
+                title: "Inteligencia artificial en odontología: del diagnóstico digital a la sonrisa personalizada",
+                summary: "La IA está transformando la práctica dental. Desde la detección automática de caries hasta la planificación ortodóncica y de implantes, ofrece mayor precisión y eficiencia.",
+                category: "Tecnología y Evidencia",
+                slug: "inteligencia-artificial-odontologia",
+                image: "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800",
+                content: `
+                    <p class="resumen text-xl font-light mb-6 text-teal-700">La inteligencia artificial (IA) está transformando la práctica dental. Desde la detección automática de caries hasta la planificación ortodóncica y de implantes, la IA ofrece mayor precisión y eficiencia.</p>
+                   
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Principales aplicaciones</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li><strong>Diagnóstico radiográfico automático</strong> de caries y lesiones periapicales.</li>
+                        <li><strong>Planificación digital de sonrisa (DSD)</strong> con simulaciones realistas.</li>
+                        <li><strong>Ortodoncia con alineadores inteligentes</strong> que predicen el movimiento dentario.</li>
+                        <li><strong>Implantología guiada por IA</strong> para ubicar el implante con precisión milimétrica.</li>
+                        <li><strong>Análisis del desgaste dental y bruxismo</strong> mediante sensores y aprendizaje automático.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Evidencia científica reciente</h2>
+                    <p class="mb-4">Una revisión (2024) mostró precisión diagnóstica > 90% de la IA en detección de caries. Estudios reportan que los algoritmos CNN superan al diagnóstico humano en radiografías panorámicas complejas. La integración de IA en diseño de sonrisa aumenta la coherencia estética y la satisfacción del paciente.</p>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Ventajas para los pacientes</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li>Diagnósticos más rápidos y personalizados.</li>
+                        <li>Reducción de errores humanos.</li>
+                        <li>Mejor comunicación visual y simulaciones realistas.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Limitaciones y retos</h2>
+                    <p class="mb-4">Los algoritmos deben validarse clínicamente antes de uso rutinario. La IA no sustituye el juicio clínico del odontólogo. La privacidad de los datos del paciente es una prioridad ética.</p>
+
+                    <div class="mt-12 p-8 bg-teal-50 rounded-xl border-l-4 border-teal-600">
+                        <h3 class="text-2xl font-serif-display font-bold mb-3 text-teal-800">Conclusión</h3>
+                        <p class="text-gray-700">La inteligencia artificial representa una herramienta poderosa para mejorar la precisión, previsibilidad y experiencia del paciente. En pocos años, será parte cotidiana de la odontología personalizada.</p>
+                    </div>
+                `
+            },
+            {
+                id: 9,
+                title: "La higiene bucal personalizada: más allá del cepillo y la pasta",
+                summary: "La higiene bucal ha evolucionado desde recomendaciones generales hasta planes personalizados que consideran la microbiota oral, hábitos, dieta y genética.",
+                category: "Salud Preventiva",
+                slug: "higiene-bucal-personalizada",
+                image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=800",
+                content: `
+                    <p class="resumen text-xl font-light mb-6 text-teal-700">La higiene bucal ha evolucionado desde recomendaciones generales hasta planes personalizados que consideran la microbiota oral, hábitos, dieta y genética. La evidencia reciente demuestra que adaptar la rutina de higiene a las características individuales mejora la prevención de caries y enfermedad periodontal.</p>
+                   
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Factores que influyen en la personalización</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li><strong>Tipo de cepillo y técnica de cepillado:</strong> manual o eléctrico, con presión controlada y angulación según la anatomía dental.</li>
+                        <li><strong>Pasta dental específica:</strong> con flúor, hidroxiapatita, zinc o nitrato de potasio, según sensibilidad o tendencia a caries.</li>
+                        <li><strong>Hilo o cepillos interdentales</strong> según tamaño de espacios.</li>
+                        <li><strong>Enjuagues antisépticos dirigidos:</strong> con clorhexidina de baja concentración o aceites esenciales en casos de gingivitis.</li>
+                        <li><strong>Monitoreo digital del cepillado</strong> mediante dispositivos con IA que registran frecuencia y técnica.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Microbiota oral y personalización</h2>
+                    <p class="mb-4">La secuenciación genética ha permitido conocer el perfil bacteriano individual. Estudios recientes sugieren que ciertos probióticos orales pueden equilibrar la flora y reducir la inflamación gingival.</p>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Innovaciones científicas recientes</h2>
+                    <p class="mb-4">La hidroxiapatita biomimética como sustituto del flúor ha mostrado eficacia en remineralización sin riesgo de fluorosis. Los dispositivos inteligentes que registran la presión del cepillado y la sincronizan con apps móviles mejoran la técnica y la adherencia.</p>
+
+                    <div class="mt-12 p-8 bg-teal-50 rounded-xl border-l-4 border-teal-600">
+                        <h3 class="text-2xl font-serif-display font-bold mb-3 text-teal-800">Consejos prácticos</h3>
+                        <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                            <li>Acude al odontólogo para una valoración de riesgo personalizada.</li>
+                            <li>Usa pasta con flúor ≥ 1450 ppm o con hidroxiapatita.</li>
+                            <li>Cambia tu cepillo cada 3 meses o tras infecciones orales.</li>
+                            <li>No olvides la limpieza interdental y lingual.</li>
+                            <li>Mantén una dieta baja en azúcares fermentables y rica en fibra.</li>
+                        </ol>
+                    </div>
+                `
+            },
+            {
+                id: 10,
+                title: "Dispositivos temporomandibulares y DAM: alivio para el bruxismo y la apnea del sueño",
+                summary: "Los dispositivos temporomandibulares son herramientas fundamentales en el manejo del bruxismo, el dolor orofacial y la apnea obstructiva del sueño leve a moderada.",
+                category: "Función y DTM",
+                slug: "dispositivos-temporomandibulares-dam",
+                image: "https://images.unsplash.com/photo-1511798616182-aab88a5a8c7a?w=800",
+                content: `
+                    <p class="resumen text-xl font-light mb-6 text-teal-700">Los dispositivos temporomandibulares —como las férulas de descarga y los dispositivos de avance mandibular (DAM)— son herramientas fundamentales en el manejo del bruxismo, el dolor orofacial y la apnea obstructiva del sueño (AOS) leve a moderada. Nuevas investigaciones respaldan su eficacia clínica y su impacto positivo en la calidad de vida.</p>
+                   
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Férulas de descarga</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li>Se utilizan para reducir la actividad muscular nocturna y proteger los dientes del desgaste.</li>
+                        <li>Estudios recientes demuestran que el uso nocturno de férulas personalizadas disminuye significativamente la frecuencia de apretamiento y el dolor muscular al despertar.</li>
+                        <li>Los materiales termoplásticos modernos mejoran el confort y la adherencia del paciente.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Dispositivos de avance mandibular (DAM)</h2>
+                    <ul class="list-disc ml-6 space-y-2 mb-6">
+                        <li>Indicados en apnea leve o moderada y ronquido primario.</li>
+                        <li>Funcionan adelantando la mandíbula 2-6 mm para evitar el colapso faríngeo.</li>
+                        <li>Su eficacia se equipara al CPAP en casos leves, con mejor tolerancia.</li>
+                    </ul>
+
+                    <h2 class="text-2xl font-serif-display font-bold mb-4 mt-8">Evidencia científica reciente</h2>
+                    <p class="mb-4">Un metaanálisis (2024) mostró que los DAM reducen el índice apnea-hipopnea (IAH) en un 60% en pacientes con apnea leve/moderada. Estudios con electromiografía revelan que las férulas rígidas estabilizan la actividad muscular en bruxistas. Los dispositivos híbridos (férula + avance) están mostrando resultados prometedores en pacientes con ambos trastornos.</p>
+
+                    <div class="mt-12 p-8 bg-teal-50 rounded-xl border-l-4 border-teal-600">
+                        <h3 class="text-2xl font-serif-display font-bold mb-3 text-teal-800">Recomendaciones clínicas</h3>
+                        <ol class="list-decimal ml-6 space-y-2 text-gray-700">
+                            <li>Diagnóstico previo mediante polisomnografía.</li>
+                            <li>Elaboración personalizada por odontólogo especializado.</li>
+                            <li>Revisión periódica del ajuste y control de síntomas.</li>
+                            <li>Combinación con higiene del sueño y control del peso.</li>
+                        </ol>
+                    </div>
+                `
+            }
+        ];
+
+        /* ==========  SISTEMA DE RUTAS  ========== */
+        const appElement = document.getElementById('content');
+        let currentView = 'home';
+
+        function navigate(viewName, params = {}) {
+            currentView = viewName;
+            window.location.hash = viewName === 'article' ? `article-${params.slug}` : viewName;
+            updateActiveNav();
+            renderView();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateActiveNav() {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-teal-600', 'font-bold');
+                link.classList.add('text-gray-600');
+                if (link.dataset.nav === currentView) {
+                    link.classList.add('text-teal-600', 'font-bold');
+                    link.classList.remove('text-gray-600');
+                }
+            });
+        }
+
+        function renderView() {
+            appElement.innerHTML = '<div class="text-center py-20">Cargando contenido...</div>';
+           
+            setTimeout(() => {
+                const hash = window.location.hash.substring(1);
+                if (hash.startsWith('article-')) {
+                    const slug = hash.substring('article-'.length);
+                    const article = articles.find(a => a.slug === slug);
+                    appElement.innerHTML = article ? renderArticle(article) : render404();
+                } else {
+                    switch (currentView) {
+                        case 'trayectoria':
+                            appElement.innerHTML = renderTrajectory();
+                            break;
+                        case 'blog':
+                            appElement.innerHTML = renderBlog();
+                            break;
+                        case 'sobremi':
+                            appElement.innerHTML = renderSobreMi();
+                            break;
+                        case 'home':
+                        default:
+                            appElement.innerHTML = renderHome();
+                            break;
+                    }
+                }
+                updateActiveNav();
+            }, 100);
+        }
+
+        /* ==========  VISTAS  ========== */
+        function renderHome() {
+            const latestArticles = articles.slice(0, 3);
+            document.title = "Dra. María Teresa Jiménez | Especialista en Estética Barcelona";
+           
+            return `
+                <!-- HERO -->
+                <section class="relative bg-gray-900 overflow-hidden py-32 md:py-48 video-fallback">
+                    <video class="hero-video hidden md:block" autoplay muted loop playsinline aria-hidden="true">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        <source src="https://www.w3schools.com/html/mov_bbb.webm" type="video/webm">
+                    </video>
+                    <div class="video-overlay"></div>
+                    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white z-10">
+                        <h1 class="font-serif-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                            Especialista en Estética Avanzada y Rehabilitación Funcional en Barcelona
+                        </h1>
+                        <p class="text-xl sm:text-2xl font-light mb-8 max-w-3xl">
+                            Sonrisas que perduran, porque abordo la función (DTM, Oclusión) que las sustenta.
+                        </p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
+                            <a href="#cita" class="cta-primary text-lg px-8 py-3 rounded-xl shadow-xl flex-shrink-0" onclick="showBookingForm()">
+                                📅 Agenda tu Diagnóstico Estético y Funcional
+                            </a>
+                            <button onclick="openLightbox()" class="cta-secondary text-lg px-8 py-3 rounded-xl shadow-lg inline-flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                </svg>
+                                Ver vídeo
+                            </button>
+                            <a href="#contacto-b2b" class="cta-secondary text-lg px-8 py-3 rounded-xl shadow-lg">
+                                Soy Odontólogo/Referidor
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SOBRE MÍ -->
+                <section class="py-16 bg-white">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-10 items-center">
+                        <div class="md:col-span-2">
+                            <h2 class="text-3xl font-serif-display font-bold mb-4 border-b-2 pb-2 border-gray-100">
+                                Mi Filosofía: Estética y Función son Inseparables
+                            </h2>
+                            <p class="text-lg mb-4 text-gray-700">
+                                La odontología es para mí una ciencia y un arte. No busco solo sonrisas bonitas, sino restaurar la <strong>función completa del sistema masticatorio</strong>. Mi enfoque integral combina la estética de lujo con la rehabilitación funcional compleja.
+                            </p>
+                            <p class="text-base font-semibold text-gray-700 mb-4">
+                                <strong>Máster en Odontología Estética Avanzada y Docencia Universitaria (UIC Barcelona).</strong>
+                            </p>
+                            <a href="#trayectoria" onclick="navigate('trayectoria')" class="mt-4 inline-block text-sm font-semibold text-gray-900 border-b border-gray-900 hover:text-red-600 transition">
+                                Ver Trayectoria Profesional Completa →
+                            </a>
+                        </div>
+                        <div class="md:col-span-1 text-center">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&h=300&fit=crop&crop=face"
+                                 alt="Dra. María Teresa Jiménez"
+                                 class="w-48 h-48 rounded-full mx-auto mb-4 object-cover shadow-lg">
+                            <p class="text-sm font-bold uppercase text-gray-500">Autoridad & Certificaciones</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SERVICIOS -->
+                <section class="py-16 bg-gray-100">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="text-4xl font-serif-display font-bold mb-10 text-center">Mis Áreas de Especialización</h2>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-l-4 border-teal-600 transform transition hover:-translate-y-1">
+                                <h3 class="text-2xl font-serif-display font-bold mb-3 text-teal-600">Estética Dental Digital y de Lujo</h3>
+                                <p class="mb-4 text-gray-600">Transformamos sonrisas con máxima precisión y armonía facial. Flujos 100% digitales para resultados predecibles.</p>
+                                <ul class="list-disc ml-6 space-y-1 text-gray-700 mb-6">
+                                    <li>Diseño de Sonrisa Digital (DSD)</li>
+                                    <li>Carillas de Porcelana Ultra-finas</li>
+                                    <li>Armonización Orofacial</li>
+                                    <li>Blanqueamiento Profesional</li>
+                                </ul>
+                                <button onclick="showBookingForm('estetica')" class="cta-primary px-6 py-2 rounded-full font-semibold">
+                                    Inicia tu Transformación →
+                                </button>
+                            </div>
+                            <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-l-4 border-gray-800 transform transition hover:-translate-y-1">
+                                <h3 class="text-2xl font-serif-display font-bold mb-3 text-gray-800">Rehabilitación Funcional Compleja</h3>
+                                <p class="mb-4 text-gray-600">Abordamos problemas complejos de mordida, dolor mandibular (DTM) y desgaste. Recibo pacientes derivados.</p>
+                                <ul class="list-disc ml-6 space-y-1 text-gray-700 mb-6">
+                                    <li>Diagnóstico y Tratamiento de DTM</li>
+                                    <li>Rehabilitación Oclusal Compleja</li>
+                                    <li>Dispositivos de Avance Mandibular (DAM)</li>
+                                    <li>Implantes Guiados Digitalmente</li>
+                                </ul>
+                                <button onclick="showBookingForm('funcional')" class="cta-secondary px-6 py-2 rounded-full font-semibold">
+                                    Contacto para Derivaciones →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- BLOG PREVIEW -->
+                <section class="py-16">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 class="text-4xl font-serif-display font-bold mb-6 text-center">Evidencia Científica y Odontología Digital</h2>
+                        <p class="text-center text-lg mb-10 max-w-2xl mx-auto text-gray-600">
+                            Comparto mi conocimiento y análisis de los últimos avances científicos que aplico en mi práctica.
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            ${latestArticles.map(article => renderArticleCard(article)).join('')}
+                        </div>
+                        <div class="text-center mt-12">
+                            <a href="#blog" onclick="navigate('blog')" class="cta-secondary px-6 py-3 rounded-xl font-semibold">
+                                Ver Todos los Artículos
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderTrajectory() {
+            document.title = "Trayectoria Profesional | Dra. María Teresa Jiménez";
+           
+            return `
+                <section class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h1 class="text-5xl font-serif-display font-bold mb-6 text-gray-800">Filosofía y Trayectoria Profesional</h1>
+                    <div class="border-b-2 border-teal-600 mb-10 pb-4">
+                        <p class="text-xl font-light text-gray-600">Dra. María Teresa Jiménez Díaz</p>
+                    </div>
+                    <div class="mb-12">
+                        <h2 class="text-3xl font-serif-display font-bold mb-4 text-teal-700">Mi Compromiso: Odontología Integral de Excelencia</h2>
+                        <p class="text-lg mb-4 leading-relaxed">
+                            Mi práctica se centra en la certeza de que una sonrisa verdaderamente bella debe ser, ante todo, completamente funcional. La estética sin una base oclusal y funcional sólida es pasajera. Por ello, integro el diagnóstico funcional complejo (DTM y Oclusión) en cada planificación estética, asegurando que mis pacientes no solo se vean mejor, sino que vivan sin molestias ni desgaste a largo plazo.
+                        </p>
+                        <p class="text-lg font-semibold text-gray-700 italic">
+                            "La tecnología digital nos da la precisión, pero el criterio clínico y el enfoque humano nos dan la excelencia y la durabilidad."
+                        </p>
+                    </div>
+                    <h2 class="text-3xl font-serif-display font-bold mb-8 text-gray-800">Educación y Práctica Destacada</h2>
+                    <div class="space-y-8 relative">
+                        <div class="absolute left-3 top-0 bottom-0 w-1 bg-gray-200 hidden sm:block"></div>
+
+                        <div class="flex items-start space-x-6 relative">
+                            <div class="w-6 h-6 rounded-full bg-teal-600 flex-shrink-0 z-10 hidden sm:block"></div>
+                            <div class="flex-grow bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                                <p class="text-sm text-gray-500 font-semibold mb-1">2003 – 2009</p>
+                                <h3 class="text-xl font-bold font-serif-display text-gray-900 mb-1">Universidad Central de Venezuela</h3>
+                                <p class="text-gray-700">Odontólogo General.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 relative">
+                            <div class="w-6 h-6 rounded-full bg-teal-600 flex-shrink-0 z-10 hidden sm:block"></div>
+                            <div class="flex-grow bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                                <p class="text-sm text-gray-500 font-semibold mb-1">2004</p>
+                                <h3 class="text-xl font-bold font-serif-display text-gray-900 mb-1">Premio Honorífico</h3>
+                                <p class="text-gray-700">Cátedra de Anatomía Humana — Dr. Oscar Beaujon.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 relative">
+                            <div class="w-6 h-6 rounded-full bg-teal-600 flex-shrink-0 z-10 hidden sm:block"></div>
+                            <div class="flex-grow bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                                <p class="text-sm text-gray-500 font-semibold mb-1">2010 – 2011</p>
+                                <h3 class="text-xl font-bold font-serif-display text-gray-900 mb-1">Docente</h3>
+                                <p class="text-gray-700">Cátedra de Odontología Operatoria — UCV.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 relative">
+                            <div class="w-6 h-6 rounded-full bg-teal-600 flex-shrink-0 z-10 hidden sm:block"></div>
+                            <div class="flex-grow bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                                <p class="text-sm text-gray-500 font-semibold mb-1">2011 – 2013</p>
+                                <h3 class="text-xl font-bold font-serif-display text-gray-900 mb-1">UIC Barcelona</h3>
+                                <p class="text-gray-700">Máster en Odontología Restauradora y Estética • Máster en Investigación en Odontología • Diploma en Esthetic Dentistry</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 relative">
+                            <div class="w-6 h-6 rounded-full bg-teal-600 flex-shrink-0 z-10 hidden sm:block"></div>
+                            <div class="flex-grow bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                                <p class="text-sm text-gray-500 font-semibold mb-1">2012</p>
+                                <h3 class="text-xl font-bold font-serif-display text-gray-900 mb-1">Homologación</h3>
+                                <p class="text-gray-700">Título Oficial Español de Licenciada en Odontología.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 relative">
+                            <div class="w-6 h-6 rounded-full bg-teal-600 flex-shrink-0 z-10 hidden sm:block"></div>
+                            <div class="flex-grow bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                                <p class="text-sm text-gray-500 font-semibold mb-1">2013 – 2015</p>
+                                <h3 class="text-xl font-bold font-serif-display text-gray-900 mb-1">UIC Barcelona — Profesor Asistente</h3>
+                                <p class="text-gray-700">Máster en Odontología Restauradora y Estética.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 relative">
+                            <div class="w-6 h-6 rounded-full bg-teal-600 flex-shrink-0 z-10 hidden sm:block"></div>
+                            <div class="flex-grow bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                                <p class="text-sm text-gray-500 font-semibold mb-1">2015 – 2021</p>
+                                <h3 class="text-xl font-bold font-serif-display text-gray-900 mb-1">UIC Barcelona — Profesora</h3>
+                                <p class="text-gray-700">Departamento de Odontología Integrada · Clínica Universitaria.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-6 relative">
+                            <div class="w-6 h-6 rounded-full bg-teal-600 flex-shrink-0 z-10 hidden sm:block"></div>
+                            <div class="flex-grow bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                                <p class="text-sm text-gray-500 font-semibold mb-1">2013 – Actualidad</p>
+                                <h3 class="text-xl font-bold font-serif-display text-gray-900 mb-1">Práctica Privada Exclusiva</h3>
+                                <p class="text-gray-700">Rehabilitación oral, prótesis y estética dental.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderBlog() {
+            document.title = "Blog | Odontología Digital Barcelona | Dra. Jiménez";
+            const categories = [...new Set(articles.map(a => a.category))];
+           
+            return `
+                <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h1 class="text-5xl font-serif-display font-bold mb-4 text-center text-gray-800">Blog: Evidencia Científica y Tecnología en Estética</h1>
+                    <p class="text-center text-lg mb-10 max-w-3xl mx-auto text-gray-600">
+                        Artículos para pacientes informados y colegas referidores. La práctica basada en la evidencia es mi pilar.
+                    </p>
+                    <div class="flex flex-wrap justify-center space-x-3 mb-12">
+                        <button onclick="filterArticles('')" class="px-4 py-2 text-sm font-semibold rounded-full transition duration-150 bg-teal-600 text-white hover:bg-teal-700">Todos</button>
+                        ${categories.map(cat => `
+                            <button onclick="filterArticles('${cat}')" class="px-4 py-2 text-sm font-semibold rounded-full transition duration-150 bg-gray-200 text-gray-700 hover:bg-teal-100 hover:text-teal-700 mt-2 sm:mt-0">${cat}</button>
+                        `).join('')}
+                    </div>
+                    <div id="article-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        ${articles.map(article => renderArticleCard(article)).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderArticle(article) {
+            document.title = `${article.title} | Dra. María Teresa Jiménez`;
+           
+            return `
+                <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <p class="text-base uppercase font-semibold text-red-600 mb-2">${article.category}</p>
+                    <h1 class="text-4xl sm:text-5xl font-serif-display font-bold mb-6 leading-tight text-gray-800">${article.title}</h1>
+                    <div class="flex items-center space-x-3 text-sm text-gray-500 mb-8">
+                        <span>Por Dra. María Teresa Jiménez</span>
+                        <span>•</span>
+                        <span>Especialista en Estética y Función</span>
+                    </div>
+                    <img src="${article.image}" alt="${article.title}" class="w-full h-80 object-cover rounded-lg mb-8">
+                    <div class="article-content text-gray-700 text-lg leading-relaxed">
+                        ${article.content}
+                    </div>
+                    <div class="mt-12 p-8 bg-teal-50 rounded-xl border-l-4 border-teal-600 text-center">
+                        <h3 class="text-2xl font-serif-display font-bold mb-3 text-teal-800">¿Tienes dudas sobre tu caso?</h3>
+                        <p class="mb-5 text-gray-700">
+                            La clave de un tratamiento exitoso es un diagnóstico preciso y funcional. Agenda una valoración conmigo en Barcelona.
+                        </p>
+                        <a href="#cita" class="cta-primary text-lg px-8 py-3 rounded-xl shadow-md" onclick="showBookingForm()">
+                            Solicitar Diagnóstico Personalizado 📞
+                        </a>
+                        <p class="text-sm mt-3 text-gray-500">
+                            (Si eres un colega, puedes usar el botón de 'Soy Odontólogo/Referidor' en la página de inicio)
+                        </p>
+                    </div>
+                    <div class="mt-10 text-center">
+                        <a href="#blog" onclick="navigate('blog')" class="text-gray-700 hover:text-teal-700 font-semibold transition">← Volver al Blog</a>
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderArticleCard(article) {
+            return `
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden article-card cursor-pointer border border-gray-100"
+                     onclick="navigate('article-${article.slug}')">
+                    <img src="${article.image || 'https://via.placeholder.com/800x400'}"
+                         alt="${article.title}"
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-xs uppercase font-semibold text-teal-600 mb-2">${article.category}</p>
+                        <h3 class="font-serif-display text-xl font-bold mb-3">${article.title}</h3>
+                        <p class="text-gray-600 text-sm">${article.summary}</p>
+                        <span class="mt-4 inline-block text-sm font-semibold text-teal-700">Leer Artículo →</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function filterArticles(category) {
+            const list = document.getElementById('article-list');
+            if (!list) return;
+            const cards = list.querySelectorAll('.article-card');
+            cards.forEach(card => {
+                const cardCategory = card.querySelector('p').textContent;
+                if (category === '' || cardCategory === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            document.querySelectorAll('.flex-wrap button').forEach(btn => {
+                btn.classList.remove('bg-teal-600', 'text-white', 'hover:bg-teal-700');
+                btn.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-teal-100', 'hover:text-teal-700');
+            });
+            event.target.classList.add('bg-teal-600', 'text-white');
+            event.target.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-teal-100', 'hover:text-teal-700');
+        }
+
+        function render404() {
+            return `
+                <section class="py-32 text-center">
+                    <h1 class="text-6xl font-serif-display font-bold mb-4 text-gray-800">404</h1>
+                    <h2 class="text-2xl mb-6">Artículo no encontrado</h2>
+                    <p class="text-gray-600 mb-8">El contenido que buscas no existe o ha sido movido.</p>
+                    <a href="#home" onclick="navigate('home')" class="cta-primary px-6 py-3 rounded-xl">
+                        Volver al Inicio
+                    </a>
+                </section>
+            `;
+        }
+
+        function showBookingForm(type = 'general') {
+            alert(`Formulario de cita para: ${type}\n\nEn producción, esto abriría un formulario real o redirigiría a tu sistema de citas.`);
+        }
+
+        function openLightbox() {
+            const lb = document.getElementById('videoLightbox');
+            lb.style.display = 'flex';
+            document.getElementById('lightboxVideo').play().catch(e => console.log("Autoplay bloqueado"));
+        }
+
+        function closeLightbox(e) {
+            if (e.target.id === 'videoLightbox' || e.target.classList.contains('close-lightbox')) {
+                const lb = document.getElementById('videoLightbox');
+                lb.style.display = 'none';
+                document.getElementById('lightboxVideo').pause();
+            }
+        }
+
+       
+        function renderSobreMi() {
+            document.title = "Sobre mí | Dra. María Teresa Jiménez";
+            return `
+                <section class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h1 class="text-5xl font-serif-display font-bold mb-6 text-gray-800">Sobre mí</h1>
+                    <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                        <p><strong>¡Hola! Soy la Dra. María Teresa Jiménez</strong>, odontóloga apasionada por el arte y la ciencia detrás de una sonrisa saludable y armónica.</p>
+                        <p>Nací en Venezuela, donde obtuve mi título de odontólogo, y posteriormente decidí continuar mi formación en el exterior, especializándome en prótesis y estética dental. Actualmente formo parte del equipo de <strong>Cambraclinic</strong>, un espacio donde la odontología se vive con tecnología, precisión y, sobre todo, con humanidad.</p>
+                        <p>Desde mis inicios he creído que cada sonrisa cuenta una historia, y que el trabajo del odontólogo no se limita a restaurar dientes, sino a devolver confianza, bienestar y equilibrio. Esta visión me ha acompañado en cada etapa profesional: desde la atención clínica diaria hasta la actualización constante en nuevas técnicas, materiales y tendencias estéticas.</p>
+                        <p>Mi especialidad en prótesis y estética me ha permitido combinar el detalle técnico con la sensibilidad artística. Cada diseño de sonrisa, cada rehabilitación y cada tratamiento que realizo busca respetar la belleza natural del paciente, priorizando siempre la función, la salud y la comodidad a largo plazo.</p>
+                        <p>En el trato con mis pacientes, valoro profundamente la empatía, la escucha activa y la confianza mutua. Creo que un buen profesional no solo debe dominar la técnica, sino también comprender los miedos, las expectativas y los deseos de quien se sienta en la silla dental.</p>
+                        <p>En Cambraclinic, trabajo junto a un equipo multidisciplinar liderado por el <strong>Dr. Víctor Cambra</strong>, comprometido con la excelencia y el bienestar integral. Nuestro objetivo es ofrecer una odontología moderna, cercana y basada en la evidencia científica, donde la tecnología digital, la precisión y el trato humano se combinan para ofrecer resultados naturales y duraderos.</p>
+                        <p>Si algo define mi forma de trabajar es la dedicación, el detalle y la pasión por seguir aprendiendo. La odontología, para mí, es una vocación que evoluciona cada día con la sonrisa de mis pacientes.</p>
+                        <p>Te invito a conocer mi trabajo, mis artículos y a descubrir cómo la odontología actual puede transformar no solo tu sonrisa, sino tu manera de sentirte contigo mismo.</p>
+                    </div>
+                    <div class="mt-10 text-center">
+                        <a href="#home" onclick="navigate('home')" class="text-gray-700 hover:text-teal-700 font-semibold transition">← Volver al Inicio</a>
+                    </div>
+                </section>
+            `;
+        }
+
+
+        /* ==========  INICIALIZACIÓN  ========== */
+        document.addEventListener('DOMContentLoaded', () => {
+            // Menú móvil
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+           
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+            });
+           
+            // Cerrar menú al hacer clic en un enlace
+            mobileMenu.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+           
+            // Manejo de rutas
+            function handleHashChange() {
+                const hash = window.location.hash.substring(1);
+                if (hash.startsWith('article-')) {
+                    currentView = 'article';
+                } else {
+                    currentView = hash || 'home';
+                }
+                renderView();
+            }
+           
+            window.addEventListener('hashchange', handleHashChange);
+            handleHashChange();
+           
+            // Analytics personalizado (puedes reemplazar con Google Analytics)
+            document.addEventListener('click', (e) => {
+                if (e.target.matches('a[href^="#"]')) {
+                    console.log('Navegación:', e.target.getAttribute('href'));
+                }
+            });
+        });
+       
+        // Service Worker para PWA (opcional)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(() => {});
+        }
+    </script>
+</body>
+</html>
